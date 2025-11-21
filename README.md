@@ -113,18 +113,13 @@ iot-mqtt-esp32-luiz/
 │   └── codigo_esp32.ino
 │
 └── docs/
-    ├── circuito_led_desligado.png
-    ├── circuito_led_ligado.png
     ├── circuito_completo_mqtt_atuador.png
     ├── console_auto_led_desligado.png
     ├── console_auto_led_ligado.png
-    ├── console_mqtt_on.png
-    ├── console_mqtt_off.png
-    ├── mqtt_sensor_recebido.png
-    ├── mqtt_atuador_on.png
-    ├── mqtt_atuador_off.png
-    ├── grafico_sensor.png
     ├── grafico_atuador.png
+    ├── grafico_sensor.png
+    ├── mqtt_atuador_on_off.png
+    ├── mqtt_sensor_recebido.png
     └── fluxograma_funcionamento.png
 ```
 
