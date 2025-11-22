@@ -57,7 +57,7 @@ Estrutura atual do projeto:
 
 iot-mqtt-esp32-luiz/
 
-• artigo_final/
+• artigo_IoT/
 
  • artigo_IoT.pdf
  
