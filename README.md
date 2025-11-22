@@ -47,10 +47,10 @@ docs/fluxograma_funcionamento.png
 iot-mqtt-esp32-luiz/
 │
 ├── artigo_final/
-│ ├── artigo_IoT.pdf
-│ └── txt.txt
+│ └── artigo_IoT.pdf
 │
 ├── docs/
+│ ├── circuito_completo.png
 │ ├── circuito_completo_mqtt_atuador.png
 │ ├── console_auto_led_desligado.png
 │ ├── console_auto_led_ligado.png
