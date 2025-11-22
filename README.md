@@ -45,26 +45,26 @@ docs/fluxograma_funcionamento.png
 ## 3. Organização do Repositório
 
 iot-mqtt-esp32-luiz/
-│
-├── artigo_final/
-│   └── artigo_IoT.pdf
-│
-├── docs/
-│   ├── circuito_completo.png
-│   ├── circuito_completo_mqtt_atuador.png
-│   ├── console_auto_led_desligado.png
-│   ├── console_auto_led_ligado.png
-│   ├── fluxograma_funcionamento.png
-│   ├── grafico_atuador.png
-│   ├── grafico_sensor.png
-│   ├── mqtt_atuador_on_off.png
-│   └── mqtt_sensor_recebido.png
-│
-├── src/
-│   └── codigo_esp32.ino
-│
-├── LICENSE
-└── README.md
+|
++-- artigo_final/
+|   +-- artigo_IoT.pdf
+|
++-- docs/
+|   +-- circuito_completo.png
+|   +-- circuito_completo_mqtt_atuador.png
+|   +-- console_auto_led_desligado.png
+|   +-- console_auto_led_ligado.png
+|   +-- fluxograma_funcionamento.png
+|   +-- grafico_atuador.png
+|   +-- grafico_sensor.png
+|   +-- mqtt_atuador_on_off.png
+|   +-- mqtt_sensor_recebido.png
+|
++-- src/
+|   +-- codigo_esp32.ino
+|
++-- LICENSE
++-- README.md
 
 
 ---
