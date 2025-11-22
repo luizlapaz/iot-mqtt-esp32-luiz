@@ -130,6 +130,7 @@ Imagem completa do circuito:
 ### Comandos aceitos (atuador)
 
 ON
+
 OFF
 
 ---
@@ -154,11 +155,13 @@ Quatro medições foram realizadas para cada caso.
 ### Sensor → MQTT
 
 Valores: 9.30 s, 8.12 s, 8.58 s, 7.30 s
+
 Média: 8.32 s
 
 ### MQTT → Atuador
 
 Valores: 0.91 s, 0.87 s, 0.73 s, 0.93 s
+
 Média: 0.86 s
 
 Gráficos dos resultados:
