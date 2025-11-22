@@ -1,5 +1,3 @@
-Perfeito — segue **o README completo**, no formato normal, pronto para colar no GitHub, sem blocos de código e com toda a estrutura revisada e coerente.
-
 ---
 
 # iot-mqtt-esp32-luiz
