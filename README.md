@@ -1,144 +1,154 @@
 # iot-mqtt-esp32-luiz
 Projeto acadêmico da disciplina Objetos Inteligentes Conectados, contendo código-fonte, documentação, esquemas e testes do sistema IoT baseado em ESP32, DHT22 e MQTT.
 
-# Sistema IoT com ESP32, DHT22 e Protocolo MQTT
-
-Este repositório contém o projeto desenvolvido para a disciplina Objetos Inteligentes Conectados. O sistema consiste em um protótipo IoT capaz de realizar a leitura de temperatura e umidade por meio do sensor DHT22, publicar esses dados em um broker MQTT e permitir o acionamento remoto de um atuador (LED) tanto automaticamente quanto via comando MQTT.
-
-Toda a implementação foi realizada na plataforma de simulação Wokwi.
-
----
-
-## 1. Objetivo do Projeto
-
-O objetivo do projeto é demonstrar a construção de um sistema IoT funcional, integrando sensores, atuadores, conectividade via Wi-Fi e comunicação MQTT, de forma a cumprir todos os requisitos da disciplina, incluindo documentação, testes, gráficos, fluxograma e armazenamento em repositório público.
+# Sistema IoT com ESP32, Sensor DHT22 e Protocolo MQTT
+Autor: Luiz Henrique de Lapaz  
+Disciplina: Objetos Inteligentes Conectados  
+Professor: Wilian França Costa  
+Ano: 2025
 
 ---
 
-## 2. Hardware Utilizado (Simulado)
+## 1. Descrição do Projeto
 
-- ESP32 DevKit V1  
-- Sensor DHT22  
-- LED  
-- Resistor de 220 Ω  
-- Jumpers virtuais  
-- Ambiente de simulação: Wokwi  
+Este projeto implementa um sistema IoT utilizando:
 
----
+- ESP32 como microcontrolador principal  
+- Sensor DHT22 para leitura de temperatura e umidade  
+- LED como atuador  
+- Comunicação baseada no protocolo MQTT  
+- Simulação completa utilizando a plataforma Wokwi  
+- Monitoramento e testes com o cliente MQTTX  
 
-## 3. Conexões do Circuito
-
-### DHT22
-| Pino DHT22 | Pino ESP32 |
-|-----------|-------------|
-| VCC       | 3V3         |
-| GND       | GND         |
-| DATA      | GPIO 15     |
-
-### LED (Atuador)
-| Pino LED     | Pino ESP32 |
-|--------------|-------------|
-| Anodo (+)    | GPIO 2 (via resistor de 220 Ω) |
-| Catodo (–)   | GND |
-
-A imagem completa do circuito está disponível em `docs/`.
+O sistema realiza leitura periódica do sensor, publica os valores em um tópico MQTT, recebe comandos de outro tópico e aciona o LED tanto automaticamente quanto manualmente.
 
 ---
 
-## 4. Comunicação MQTT
+## 2. Arquitetura do Sistema
 
-- Broker: `test.mosquitto.org`  
-- Porta: 1883  
-- Cliente MQTT usado para testes: MQTTX  
-- QoS: 0
+O funcionamento segue as etapas:
 
-### Tópicos utilizados
+1. Inicialização do ESP32  
+2. Conexão ao Wi-Fi  
+3. Conexão ao broker MQTT  
+4. Leitura dos valores do DHT22  
+5. Publicação em JSON no tópico do sensor  
+6. Leitura de comandos MQTT para o atuador  
+7. Acionamento do LED  
+8. Repetição do ciclo principal  
 
-| Função                  | Tópico               |
-|------------------------|----------------------|
-| Publicação do sensor   | oiot/luiz/sensor     |
-| Controle do atuador    | oiot/luiz/atuador    |
-
-### Formato da mensagem publicada pelo sensor
-
-```json
-{"temp": 24.40, "umid": 40.00}
-```
-
-### Comandos aceitos pelo atuador
-```
-ON
-OFF
-```
+O fluxograma completo está no arquivo:
+docs/fluxograma_funcionamento.png
 
 ---
 
-## 5. Funcionamento do Sistema
+## 3. Organização do Repositório
 
-1. O ESP32 conecta-se à rede Wi-Fi.  
-2. Em seguida, estabelece conexão com o broker MQTT.  
-3. O sensor DHT22 é lido a cada 5 segundos.  
-4. Os dados são enviados ao tópico `oiot/luiz/sensor` em formato JSON.  
-5. O LED acende automaticamente se a temperatura for maior ou igual a 30 °C.  
-6. O LED pode ser acionado manualmente via MQTT, sobrescrevendo o funcionamento automático.  
-7. Todos os comandos manuais são tratados pela função de callback do MQTT.
-
----
-
-## 6. Testes e Tempo de Resposta
-
-Quatro medições foram realizadas para cada componente:
-
-### Sensor → MQTT
-- Valores: 9.30 s, 8.12 s, 8.58 s, 7.30 s  
-- Média: 8.32 s  
-
-### MQTT → Atuador
-- Valores: 0.91 s, 0.87 s, 0.73 s, 0.93 s  
-- Média: 0.86 s  
-
-Os gráficos desses resultados encontram-se na pasta `docs/graficos/`.
-
----
-
-## 7. Estrutura do Repositório
-
-```
 iot-mqtt-esp32-luiz/
 │
-├── README.md
-├── LICENSE
+├── artigo_final/
+│ ├── artigo_IoT.pdf
+│ └── txt.txt
+│
+├── docs/
+│ ├── circuito_completo_mqtt_atuador.png
+│ ├── console_auto_led_desligado.png
+│ ├── console_auto_led_ligado.png
+│ ├── fluxograma_funcionamento.png
+│ ├── grafico_atuador.png
+│ ├── grafico_sensor.png
+│ ├── mqtt_atuador_on_off.png
+│ └── mqtt_sensor_recebido.png
 │
 ├── src/
-│   └── codigo_esp32.ino
+│ └── codigo_esp32.ino
 │
-└── docs/
-    ├── circuito_completo_mqtt_atuador.png
-    ├── console_auto_led_desligado.png
-    ├── console_auto_led_ligado.png
-    ├── fluxograma_funcionamento.png
-    ├── grafico_atuador.png
-    ├── grafico_sensor.png
-    ├── mqtt_atuador_on_off.png
-    └── mqtt_sensor_recebido.png
-```
+├── LICENSE
+└── README.md
+
 
 ---
 
-## 8. Execução e Reprodução do Projeto
+## 4. Simulação do Projeto
 
-1. Acesse o projeto no Wokwi (link no artigo).  
-2. Configure o MQTTX usando o broker `test.mosquitto.org`.  
-3. Assine os tópicos:
-   - `oiot/luiz/sensor`
-   - `oiot/luiz/atuador`  
-4. Ligue e desligue o LED enviando:
-   - `ON`
-   - `OFF`  
-5. Observe os dados publicados pelo sensor em tempo real.
+Simulação completa do circuito disponível em:
+
+https://wokwi.com/projects/448247854347970561
 
 ---
 
-## 9. Licença
+## 5. Tópicos MQTT Utilizados
 
-Este projeto está licenciado sob a licença MIT.
+Tópico para envio dos dados do sensor:  
+`oiot/luiz/sensor`
+
+Tópico para comandos enviados ao atuador:  
+`oiot/luiz/atuador`
+
+Broker MQTT utilizado:  
+`test.mosquitto.org:1883`
+
+---
+
+## 6. Código-Fonte
+
+O código principal do projeto está em:
+
+src/codigo_esp32.ino
+
+Contém:
+
+- Configuração de Wi-Fi  
+- Conexão ao broker MQTT  
+- Callback do atuador  
+- Leitura do DHT22  
+- Publicação em formato JSON  
+- Acionamento automático do LED  
+- Controle manual via MQTT  
+
+---
+
+## 7. Resultados Obtidos
+
+As evidências e imagens geradas durante os testes estão em:
+
+docs/
+
+Imagens incluídas:
+
+- circuito_completo_mqtt_atuador.png  
+- console_auto_led_ligado.png  
+- console_auto_led_desligado.png  
+- mqtt_atuador_on_off.png  
+- mqtt_sensor_recebido.png  
+- grafico_sensor.png  
+- grafico_atuador.png  
+- fluxograma_funcionamento.png  
+
+---
+
+## 8. Artigo Final
+
+O artigo técnico desenvolvido para o projeto está disponível em:
+
+artigo_final/artigo_IoT.pdf
+
+---
+
+## 9. Vídeo de Demonstração
+
+O vídeo deve conter:
+
+- Identificação do aluno  
+- Demonstração da simulação  
+- Funcionamento MQTT em tempo real  
+- Explicação do código  
+
+Link do vídeo (adicionar após upload):  
+[Inserir aqui]
+
+---
+
+## 10. Licença
+
+Este projeto está sob a licença MIT. O arquivo LICENSE está incluído no repositório.
