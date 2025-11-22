@@ -208,8 +208,8 @@ O vídeo deve conter:
 * Explicação do código
 * Funcionamento automático
 
-Link do vídeo (a adicionar):
-[Inserir link aqui]
+Link do vídeo:
+https://youtu.be/0vI3RoV7gqk
 
 ---
 
